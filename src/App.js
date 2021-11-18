@@ -2,25 +2,33 @@ import "./App.css";
 import { useState } from "react";
 
 const App = () => {
-  const [name, setName] = useState("Hodor")
   const [events, setEvents] = useState([
     { title: "mario's birthday bash", id: 1 },
     { title: "bowser's live stream", id: 2 },
     { title: "race on moo moo farm", id: 3 },
   ]);
 
-  const changeNameHandler = () => {
-    setName("Arya");
-    console.log(name);
+  const deleteHandler = (id) => {
+    setEvents((prevEvents) => {
+      return prevEvents.filter((event) => {
+        if(id !== event.id){
+          return true
+        }else{
+          return false
+        }
+      })
+    })
+    console.log(`id ${id} clicked`);
   };
 
   return (
     <div className="App">
-      <h1>My name is {name}</h1>
-      <button onClick={changeNameHandler}>Change Name</button>
-      {events.map((event,index) => (
+      {events.map((event, index) => (
         <div key={event.id}>
-          <h2>{index} - {event.title}</h2>
+          <h2>
+            {index} - {event.title}
+          </h2>
+          <button onClick={() => {deleteHandler(event.id)}}>Delete event</button>
         </div>
       ))}
     </div>
