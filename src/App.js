@@ -25,9 +25,12 @@ const App = () => {
     console.log(`id ${id} clicked`);
   };
 
+const subtitle = 'All the latest events in mario kingdom'
+
   return (
     <div className="App">
-      <Title />
+      <Title title="Mario Kingdom Events" subtitle={subtitle} />
+      <Title title="Jon Snow" subtitle="The King in the North" />
       {showEvents && (
       <div>
         <button onClick={() => setShowEvents(false)}>Hide Events</button>
