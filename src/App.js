@@ -4,7 +4,7 @@ import Title from "./components/Title";
 import Modal from "./components/Modal";
 
 const App = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [showEvents, setShowEvents] = useState(true);
   const [events, setEvents] = useState([
     { title: "mario's birthday bash", id: 1 },
@@ -78,6 +78,9 @@ const App = () => {
           </p>
         </Modal>
       )}
+      <div>
+        <button onClick={() => setShowModal(true)}>Show Modal</button>
+      </div>
     </div>
   );
 };
