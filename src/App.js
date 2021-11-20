@@ -4,6 +4,7 @@ import Title from "./components/Title";
 import Modal from "./components/Modal";
 
 const App = () => {
+  const [showModal, setShowModal] = useState(true);
   const [showEvents, setShowEvents] = useState(true);
   const [events, setEvents] = useState([
     { title: "mario's birthday bash", id: 1 },
@@ -11,8 +12,9 @@ const App = () => {
     { title: "race on moo moo farm", id: 3 },
   ]);
 
-  console.log(showEvents);
+  console.log(showModal);
 
+  // title delte handler
   const deleteHandler = (id) => {
     setEvents((prevEvents) => {
       return prevEvents.filter((event) => {
@@ -24,6 +26,11 @@ const App = () => {
       });
     });
     console.log(`id ${id} clicked`);
+  };
+
+  // Modal close handler
+  const closeHandler = () => {
+    setShowModal(false);
   };
 
   const subtitle = "All the latest events in mario kingdom";
@@ -60,14 +67,17 @@ const App = () => {
           </div>
         ))}
 
-      {/* <Modal>
-        <h2>10% off Coupon code!</h2>
-        <p>use the code ABDVK10 at the checkout!</p>
-      </Modal> */}
-      <Modal>
-        <h2>Terms and Conditions</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi mollitia quasi voluptate recusandae nostrum. Voluptatem beatae ipsa, quia possimus similique facilis officia iusto totam, tenetur pariatur laborum? Maiores, delectus quasi?</p>
-      </Modal>
+      {showModal && (
+        <Modal closeHandlerProp={closeHandler}>
+          <h2>Terms and Conditions</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
+            mollitia quasi voluptate recusandae nostrum. Voluptatem beatae ipsa,
+            quia possimus similique facilis officia iusto totam, tenetur
+            pariatur laborum? Maiores, delectus quasi?
+          </p>
+        </Modal>
+      )}
     </div>
   );
 };
