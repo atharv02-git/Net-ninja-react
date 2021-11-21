@@ -12,3 +12,6 @@
 .submit-button{
     background-color:#5cb85c;
 }
+.submit-button:hover{
+    background-color:#008a00;
+}
