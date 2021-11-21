@@ -7,11 +7,11 @@
   padding: 10px;
   box-sizing: border-box;
   font-size: 1.2em;
-} 
-
-.submit-button{
-    background-color:#5cb85c;
 }
-.submit-button:hover{
-    background-color:#008a00;
+
+.submit-button {
+  background-color: #5cb85c;
+}
+.submit-button:hover {
+  background-color: #008a00;
 }
