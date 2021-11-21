@@ -55,7 +55,7 @@ const App = () => {
       {showEvents && <EventList eventsArr={events} deleteHandler={deleteHandler}/>}
 
       {showModal && (
-        <Modal closeHandlerProp={closeHandler}>
+        <Modal closeHandlerProp={closeHandler} isSalesModal={true}>
           <h2>Terms and Conditions</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
