@@ -3,6 +3,7 @@ import { useState } from "react";
 import Title from "./components/Title";
 import Modal from "./components/Modal";
 import EventList from "./components/EventList";
+import EventForm from "./components/EventForm";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -56,17 +57,11 @@ const App = () => {
 
       {showModal && (
         <Modal closeHandlerProp={closeHandler} isSalesModal={true}>
-          <h2>Terms and Conditions</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-            mollitia quasi voluptate recusandae nostrum. Voluptatem beatae ipsa,
-            quia possimus similique facilis officia iusto totam, tenetur
-            pariatur laborum? Maiores, delectus quasi?
-          </p>
+          < EventForm/>
         </Modal>
       )}
       <div>
-        <button onClick={() => setShowModal(true)}>Show Modal</button>
+        <button onClick={() => setShowModal(true)}>Add Event</button>
       </div>
     </div>
   );
