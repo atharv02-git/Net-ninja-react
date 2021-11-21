@@ -8,13 +8,16 @@ import EventForm from "./components/EventForm";
 const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [showEvents, setShowEvents] = useState(true);
-  const [events, setEvents] = useState([
-    { title: "mario's birthday bash", id: 1 },
-    { title: "bowser's live stream", id: 2 },
-    { title: "race on moo moo farm", id: 3 },
-  ]);
+  const [events, setEvents] = useState([]);
 
-  console.log(showModal);
+  // function for Adding events to the list
+  const addEvents = (event) => {
+    setEvents((prevEvents) => {
+      return [...prevEvents, event];
+    });
+
+    setShowModal(false)
+  };
 
   // title delte handler
   const deleteHandler = (id) => {
@@ -53,11 +56,13 @@ const App = () => {
         </div>
       )}
 
-      {showEvents && <EventList eventsArr={events} deleteHandler={deleteHandler}/>}
+      {showEvents && (
+        <EventList eventsArr={events} deleteHandler={deleteHandler} />
+      )}
 
       {showModal && (
         <Modal closeHandlerProp={closeHandler} isSalesModal={true}>
-          < EventForm/>
+          <EventForm addEventsProp={addEvents} />
         </Modal>
       )}
       <div>
