@@ -38,11 +38,11 @@ const App = () => {
     setShowModal(false);
   };
 
-  const subtitle = "All the latest events in mario kingdom";
+  const subtitle = "All my latest events";
 
   return (
     <div className="App">
-      <Title title="Mario Kingdom Events" subtitle={subtitle} />
+      <Title title="My Events" subtitle={subtitle} />
 
       {showEvents && (
         <div>
