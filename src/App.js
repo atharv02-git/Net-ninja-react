@@ -30,7 +30,7 @@ const App = () => {
         }
       });
     });
-    console.log(`id ${id} clicked`);
+    // console.log(`id ${id} clicked`);
   };
 
   // Modal close handler
