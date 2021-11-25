@@ -6,7 +6,8 @@ import "./TripList.css";
 
 export default function TripList() {
   const [url, setUrl] = useState("http://localhost:3000/trips");
-  const { data: trips, isPending, isError} = useFetch(url);
+  // What is 2 arguments are passed inside useFetch and one oh them is direct dependencies(ie:Arrays,objects) and after logging them it goes into infinte loop and the best way to handle it is using useRef hook refer the solution in useFetch.js
+  const { data: trips, isPending, isError } = useFetch(url, { type: "Get" });
 
   return (
     <div className="trip-list">
