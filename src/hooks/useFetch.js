@@ -12,33 +12,37 @@ export const useFetch = (url) => {
     const controller = new AbortController();
 
     const fetchData = async () => {
+      setIsPending(true);
+
       //instead of using callBack function we are creating fetch data which is an async function to eliminate looping error. nOW while fettching if there is any error the res.ok prop is false it will throw an error then the catch block will catch the error and it will log the actual error message
 
-      setIsPending(true);
       try {
-        const res = await fetch(url, { signal: controller.signal});
+        const res = await fetch(url, { signal: controller.signal });
         if (!res.ok) {
           throw new Error(res.statusText);
         }
-
         const json = await res.json();
 
         setIsPending(false);
         setData(json);
         setError(null);
       } catch (err) {
-        setIsPending(false);
-        setError("Oops, cannot fetch the data :(");
-        console.log(err.message);
+        if (err.name === "AbortError") {
+          console.log("The fetch was aborted");
+        } else {
+          setIsPending(false);
+          setError("Oops, cannot fetch the data :(");
+          console.log(err.message);
+        }
       }
     };
 
-    fetchData();
     // Invoking the fetch data function
+    fetchData();
 
     // Cleanup function for abort controller
     return () => {
-        controller.abort()
+      controller.abort();
     };
   }, [url]);
 
