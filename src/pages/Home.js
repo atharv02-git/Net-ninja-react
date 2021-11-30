@@ -19,7 +19,7 @@ export default function Home() {
         articles.map((article) => (
           <div className="card" key={article.id}>
             <div>{article.title}</div>
-            <div>~{article.author}</div>
+            <div>By~{article.author}</div>
             <Link to={`articles/${article.id}`}>Read more...</Link>
           </div>
         ))}
