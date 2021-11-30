@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
+import { BrowserRouter, Route, Routes, NavLink, Navigate } from "react-router-dom";
 
 // Pages
 import Home from "./pages/Home";
@@ -23,6 +23,7 @@ function App() {
           <Route path="contact" element={<Contact />}></Route>
           <Route path="about" element={<About />}></Route>
           <Route path="articles/:id" element={<Article />}></Route>
+          <Route path="*" element={<Navigate replace to="/"></Navigate>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
